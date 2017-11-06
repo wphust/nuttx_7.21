@@ -38,9 +38,14 @@
  ****************************************************************************/
 
 #include <nuttx/config.h>
+#include <sys/types.h>
+#include <sys/mount.h>
+#include <syslog.h>
 
-#include "stm32_ccm.h"
+#include <nuttx/board.h>
+//#include "stm32_ccm.h" pei
 #include "stm32f746g-disco.h"
+
 
 /****************************************************************************
  * Public Functions
@@ -76,21 +81,23 @@ int board_app_initialize(uintptr_t arg)
 #ifdef CONFIG_FS_PROCFS
   int ret;
 
-#ifdef CONFIG_STM32_CCM_PROCFS
-  /* Register the CCM procfs entry.  This must be done before the procfs is
-   * mounted.
-   */
-
-  (void)ccm_procfs_register();
-#endif
-
   /* Mount the procfs file system */
-
-  ret = mount(NULL, SAMV71_PROCFS_MOUNTPOINT, "procfs", 0, NULL);
+  ret = mount(NULL, "/proc", "procfs", 0, NULL);
   if (ret < 0)
     {
-      SYSLOG("ERROR: Failed to mount procfs at %s: %d\n",
-             SAMV71_PROCFS_MOUNTPOINT, ret);
+	  syslog("ERROR: Failed to mount procfs at %s: %d\n",
+             "/proc", ret);
+    }
+#endif
+
+
+#ifdef CONFIG_CAN
+  /* Initialize CAN and register the CAN driver. */
+
+  ret = stm32_can_setup();
+  if (ret < 0)
+    {
+      syslog(LOG_ERR, "ERROR: stm32_can_setup failed: %d\n", ret);
     }
 #endif
 

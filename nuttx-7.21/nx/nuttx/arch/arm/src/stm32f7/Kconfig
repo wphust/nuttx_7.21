@@ -4655,4 +4655,43 @@ config STM32F7_ETHMAC_REGDEBUG
 		Enable very low-level register access debug.  Depends on CONFIG_DEBUG_FEATURES.
 
 endmenu # Ethernet MAC configuration
+
+menu "CAN driver configuration"
+	depends on STM32F7_CAN
+
+config CAN1_BAUD
+	int "CAN1 BAUD"
+	default 250000
+	depends on STM32F7_CAN1
+	---help---
+		CAN1 BAUD rate.  Required if CONFIG_STM32F7_CAN1 is defined.
+
+config CAN2_BAUD
+	int "CAN2 BAUD"
+	default 250000
+	depends on STM32F7_CAN2
+	---help---
+		CAN2 BAUD rate.  Required if CONFIG_STM32F7_CAN2 is defined.
+
+config CAN_TSEG1
+	int "TSEG1 quanta"
+	default 6
+	---help---
+		The number of CAN time quanta in segment 1. Default: 6
+
+config CAN_TSEG2
+	int "TSEG2 quanta"
+	default 7
+	---help---
+		The number of CAN time quanta in segment 2. Default: 7
+
+config STM32F7_CAN_REGDEBUG
+	bool "CAN Register level debug"
+	depends on DEBUG_CAN_INFO
+	default n
+	---help---
+		Output detailed register-level CAN device debug information.
+		Requires also CONFIG_DEBUG_CAN_INFO.
+endmenu
+
 endif # ARCH_CHIP_STM32F7

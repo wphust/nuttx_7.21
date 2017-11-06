@@ -165,6 +165,10 @@ ifeq ($(CONFIG_STM32F7_SDMMC),y)
 CHIP_CSRCS += stm32_sdmmc.c
 endif
 
+ifeq ($(CONFIG_CAN),y)
+CHIP_CSRCS += stm32_can.c
+endif
+
 ifeq ($(CONFIG_USBDEV),y)
 CHIP_CSRCS += stm32_otgdev.c
 endif

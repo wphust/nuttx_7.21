@@ -60,4 +60,8 @@ ifeq ($(CONFIG_SPORADIC_INSTRUMENTATION),y)
 CSRCS += stm32_sporadic.c
 endif
 
+ifeq ($(CONFIG_CAN),y)
+CSRCS += stm32_can.c
+endif
+
 include $(TOPDIR)/configs/Board.mk

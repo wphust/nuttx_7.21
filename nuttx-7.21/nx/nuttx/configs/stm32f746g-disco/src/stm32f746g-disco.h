@@ -122,6 +122,19 @@ void weak_function stm32_spidev_initialize(void);
 void arch_sporadic_initialize(void);
 #endif
 
+
+/****************************************************************************
+ * Name: stm32_can_setup
+ *
+ * Description:
+ *  Initialize CAN and register the CAN device
+ *
+ ****************************************************************************/
+
+#ifdef CONFIG_CAN
+int stm32_can_setup(void);
+#endif
+
 #endif /* __ASSEMBLY__ */
 #endif /* __CONFIGS_STM32F746G_DISCO_SRC_STM32F746G_DISCO_H */
 

@@ -220,6 +220,7 @@
 #  define STM32F7_NUSART                   4   /* USART1-3 and 6 */
 #  define STM32F7_NI2S                     3   /* I2S1-2 (multiplexed with SPI1-3) */
 #  define STM32F7_NI2C                     4   /* I2C1-4 */
+#  define STM32F7_NCAN                     2   /* No CAN */
 #  define STM32F7_NUSBOTGFS                1   /* USB OTG FS */
 #  define STM32F7_NUSBOTGHS                1   /* USB OTG HS */
 #  define STM32F7_NSAI                     2   /* SAI1-2 */
