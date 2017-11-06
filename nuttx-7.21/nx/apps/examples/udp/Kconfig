@@ -12,6 +12,22 @@ config EXAMPLES_UDP
 
 if EXAMPLES_UDP
 
+config EXAMPLES_UDP_PROGNAME
+	string "Program name"
+	default "udp"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the example UDP
+		program is installed.
+
+config EXAMPLES_UDP_STACKSIZE
+	int "example UDP stack size"
+	default 2048
+
+config EXAMPLES_UDP_PRIORITY
+	int "Example UDP priority"
+	default 100
+	
 config EXAMPLES_UDP_SERVER
 	bool "Target is the server"
 	default n

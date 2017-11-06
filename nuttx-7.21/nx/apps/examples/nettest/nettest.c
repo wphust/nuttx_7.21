@@ -239,14 +239,14 @@ int nettest_main(int argc, char *argv[])
 #elif defined(CONFIG_EXAMPLES_NETTEST_SERVER)
   /* Then perform the server side of the test on this thread */
 
-  recv_server();
+  nettest_recv_server();
 #endif
 
 #if !defined(CONFIG_EXAMPLES_NETTEST_SERVER) || \
     defined(CONFIG_EXAMPLES_NETTEST_LOOPBACK)
   /* Then perform the client side of the test on this thread */
 
-  send_client();
+  nettest_send_client();
 #endif
 
 #if defined(CONFIG_EXAMPLES_NETTEST_LOOPBACK) && defined(CONFIG_SCHED_WAITPID)

@@ -77,7 +77,7 @@ static inline void fill_buffer(unsigned char *buf, int offset)
  * Public Functions
  ****************************************************************************/
 
-void send_client(void)
+void udp_send_client(void)
 {
 #ifdef CONFIG_EXAMPLES_UDP_IPv6
   struct sockaddr_in6 server;

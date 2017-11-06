@@ -75,7 +75,7 @@
  * Public Function Prototypes
  ****************************************************************************/
 
-extern void send_client(void);
-extern void recv_server(void);
+extern void udp_send_client(void);
+extern void udp_recv_server(void);
 
 #endif /* __EXAMPLES_UDP_INTERNAL_H */

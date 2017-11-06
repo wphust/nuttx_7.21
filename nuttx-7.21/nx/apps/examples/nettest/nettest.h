@@ -84,7 +84,7 @@
  * Public Function Prototypes
  ****************************************************************************/
 
-extern void send_client(void);
-extern void recv_server(void);
+extern void nettest_send_client(void);
+extern void nettest_recv_server(void);
 
 #endif /* __EXAMPLES_NETTEST_H */

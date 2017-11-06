@@ -88,10 +88,23 @@ else
   INSTALL_DIR = $(BIN_DIR)
 endif
 
-CONFIG_XYZ_PROGNAME ?= udp$(EXEEXT)
-PROGNAME = $(CONFIG_XYZ_PROGNAME)
+#CONFIG_XYZ_PROGNAME ?= udp$(EXEEXT)
+#PROGNAME = $(CONFIG_XYZ_PROGNAME)
 
 ROOTDEPPATH = --dep-path .
+
+
+# Example UDP built-in application info
+
+CONFIG_EXAMPLES_UDP_STACKSIZE ?= 2048
+CONFIG_EXAMPLES_UDP_PRIORITY ?= 100
+
+APPNAME = udp
+PRIORITY = $(CONFIG_EXAMPLES_UDP_PRIORITY)
+STACKSIZE = $(CONFIG_EXAMPLES_UDP_STACKSIZE)
+
+CONFIG_EXAMPLES_UDP_PROGNAME ?= udp$(EXEEXT)
+PROGNAME = $(CONFIG_EXAMPLES_UDP_PROGNAME)
 
 # Common build
 
@@ -134,6 +147,16 @@ install: $(BIN_DIR)$(DELIM)$(PROGNAME)
 else
 install:
 
+endif
+
+# Register as built-in apps.
+ifeq ($(CONFIG_NSH_BUILTIN_APPS),y)
+$(BUILTIN_REGISTRY)$(DELIM)$(APPNAME)_main.bdat: $(DEPCONFIG) Makefile
+	$(call REGISTER,$(APPNAME),$(PRIORITY),$(STACKSIZE),$(APPNAME)_main)
+
+context: $(BUILTIN_REGISTRY)$(DELIM)$(APPNAME)_main.bdat
+else
+context:
 endif
 
 context:

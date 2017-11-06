@@ -57,7 +57,7 @@
  * Public Functions
  ****************************************************************************/
 
-void recv_server(void)
+void nettest_recv_server(void)
 {
 #ifdef CONFIG_EXAMPLES_NETTEST_IPv6
   struct sockaddr_in6 myaddr;

@@ -167,9 +167,9 @@ int udp_main(int argc, char *argv[])
   netlib_ifup("eth0");
 
 #ifdef CONFIG_EXAMPLES_UDP_SERVER
-  recv_server();
+  udp_recv_server();
 #else
-  send_client();
+  udp_send_client();
 #endif
 
   return 0;

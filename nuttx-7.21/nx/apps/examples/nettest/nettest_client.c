@@ -56,7 +56,7 @@
  * Public Functions
  ****************************************************************************/
 
-void send_client(void)
+void nettest_send_client(void)
 {
 #ifdef CONFIG_EXAMPLES_NETTEST_IPv6
   struct sockaddr_in6 myaddr;
@@ -188,6 +188,7 @@ void send_client(void)
         }
 
       printf("Sent %d bytes\n", nbytessent);
+      sleep(1);
     }
 #else
   /* Then send and receive one message */
