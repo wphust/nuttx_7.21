@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config G3_MCRECEIVER
+	bool "G3 mcreceiver"
+	default n
+	---help---
+		Enable the G3 mcreceiver
+
+if G3_MCRECEIVER
+
+config G3_MCRECEIVER_PROGNAME
+	string "Program name"
+	default "mcreceiver"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config G3_MCRECEIVER_PRIORITY
+	int "G3 mcreceiver task priority"
+	default 100
+
+config G3_MCRECEIVER_STACKSIZE
+	int "G3 mcreceiver stack size"
+	default 2048
+
+endif

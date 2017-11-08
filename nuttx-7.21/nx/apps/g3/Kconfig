@@ -7,4 +7,6 @@
 
 menu "G3"
 source "/home/wang_p/g3_rtos_amm/nuttx-7.21/nx/apps/g3/example/Kconfig"
+source "/home/wang_p/g3_rtos_amm/nuttx-7.21/nx/apps/g3/mcreceiver/Kconfig"
+source "/home/wang_p/g3_rtos_amm/nuttx-7.21/nx/apps/g3/mcsender/Kconfig"
 endmenu # G3

@@ -1,5 +1,5 @@
 ############################################################################
-# apps/g3/example/Make.defs
+# apps/g3/mcreceiver/Make.defs
 # Adds selected applications to apps/ build
 #
 #   Copyright (C) 2015 Gregory Nutt. All rights reserved.
@@ -35,5 +35,5 @@
 ############################################################################
 
 ifeq ($(CONFIG_G3_EXAMPLE),y)
-CONFIGURED_APPS += g3/example
+CONFIGURED_APPS += g3/mcreceiver
 endif

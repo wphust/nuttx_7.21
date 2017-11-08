@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config G3_MCSENDER
+	bool "G3 mcsender"
+	default n
+	---help---
+		Enable the G3 mcsender
+
+if G3_MCSENDER
+
+config G3_MCSENDER_PROGNAME
+	string "Program name"
+	default "mcsender"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config G3_MCSENDER_PRIORITY
+	int "G3 mcsender task priority"
+	default 100
+
+config G3_MCSENDER_STACKSIZE
+	int "G3 mcsender stack size"
+	default 2048
+
+endif

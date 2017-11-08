@@ -1,8 +1,7 @@
 ############################################################################
-# apps/g3/example/Make.defs
-# Adds selected applications to apps/ build
+# apps/g3/mcreceiver/Makefile
 #
-#   Copyright (C) 2015 Gregory Nutt. All rights reserved.
+#   Copyright (C) 2008, 2010-2013 Gregory Nutt. All rights reserved.
 #   Author: Gregory Nutt <gnutt@nuttx.org>
 #
 # Redistribution and use in source and binary forms, with or without
@@ -34,6 +33,26 @@
 #
 ############################################################################
 
-ifeq ($(CONFIG_G3_EXAMPLE),y)
-CONFIGURED_APPS += g3/example
-endif
+-include $(TOPDIR)/Make.defs
+
+# G3 mcreceiver built-in application info
+
+CONFIG_G3_MCRECEIVER_PRIORITY ?= SCHED_PRIORITY_DEFAULT
+CONFIG_G3_MCRECEIVER_STACKSIZE ?= 2048
+
+APPNAME = mcreceiver
+PRIORITY = $(CONFIG_G3_MCRECEIVER_PRIORITY)
+STACKSIZE = $(CONFIG_G3_MCRECEIVER_STACKSIZE)
+
+# G3 mcreceiver
+
+ASRCS =
+CSRCS =
+MAINSRC = mcreceiver_main.c
+MAINSRC += mcreceiver.c
+MAINSRC += setip.c
+
+CONFIG_G3_MCRECEIVER_PROGNAME ?= mcreceiver$(EXEEXT)
+PROGNAME = $(CONFIG_G3_MCRECEIVER_PROGNAME)
+
+include $(APPDIR)/Application.mk

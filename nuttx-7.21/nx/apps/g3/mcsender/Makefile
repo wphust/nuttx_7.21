@@ -1,8 +1,7 @@
 ############################################################################
-# apps/g3/example/Make.defs
-# Adds selected applications to apps/ build
+# apps/g3/mcsender/Makefile
 #
-#   Copyright (C) 2015 Gregory Nutt. All rights reserved.
+#   Copyright (C) 2008, 2010-2013 Gregory Nutt. All rights reserved.
 #   Author: Gregory Nutt <gnutt@nuttx.org>
 #
 # Redistribution and use in source and binary forms, with or without
@@ -34,6 +33,25 @@
 #
 ############################################################################
 
-ifeq ($(CONFIG_G3_EXAMPLE),y)
-CONFIGURED_APPS += g3/example
-endif
+-include $(TOPDIR)/Make.defs
+
+# G3 mcsender built-in application info
+
+CONFIG_G3_MCSENDER_PRIORITY ?= SCHED_PRIORITY_DEFAULT
+CONFIG_G3_MCSENDER_STACKSIZE ?= 2048
+
+APPNAME = mcsender
+PRIORITY = $(CONFIG_G3_MCSENDER_PRIORITY)
+STACKSIZE = $(CONFIG_G3_MCSENDER_STACKSIZE)
+
+# G3 mcsender
+
+ASRCS =
+CSRCS =
+MAINSRC = mcsender_main.c
+MAINSRC += mcsender.c
+
+CONFIG_G3_MCSENDER_PROGNAME ?= mcsender$(EXEEXT)
+PROGNAME = $(CONFIG_G3_MCSENDER_PROGNAME)
+
+include $(APPDIR)/Application.mk
